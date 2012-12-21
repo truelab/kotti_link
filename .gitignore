@@ -1,0 +1,16 @@
+Kotti*
+*.egg-info/
+bin/
+develop-eggs/
+dist/
+eggs/
+include/
+lib/
+local/
+.cache/
+*.pyc
+*.pt.py
+.coverage
+.installed.cfg
+coverage-*
+nose-*
