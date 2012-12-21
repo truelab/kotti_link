@@ -27,7 +27,9 @@ def test_redirect_view(db_session, dummy_request, extra_principals):
     root = get_root()
     link = root['link'] = Link(link=u'/', title=u'Test Link')
     view = LinkView(link, dummy_request)
-    assert(isinstance(view.redirect(), HTTPFound))
+    result = view.redirect()
+    assert(isinstance(result, HTTPFound))
+    assert result.status == u'302 Found'
 
     bob = get_principals()[u'bob']
     dummy_request.user = bob
@@ -35,6 +37,41 @@ def test_redirect_view(db_session, dummy_request, extra_principals):
     link.__acl__ = acl
     view = LinkView(link, dummy_request)
     assert(isinstance(view.redirect(), dict))
+
+
+def test_redirect_internal(db_session, dummy_request):
+    from kotti import main
+    from kotti.resources import Document
+
+    settings = {'sqlalchemy.url': testing_db_url(),
+                'kotti.secret': 'dude'}
+    with patch('kotti.resources.initialize_sql'):
+        main({}, **settings)
+
+    root = get_root()
+    root['test-doc'] = Document(title='Test Doc')
+    link = root['link'] = Link(link=u'/test-doc', title=u'Test Link')
+    view = LinkView(link, dummy_request)
+    result = view.redirect()
+    assert result.location == '/test-doc'
+
+
+def test_redirect_external(db_session, dummy_request):
+    from kotti import main
+    from kotti.resources import Document
+
+    settings = {'sqlalchemy.url': testing_db_url(),
+                'kotti.secret': 'dude'}
+    with patch('kotti.resources.initialize_sql'):
+        main({}, **settings)
+
+    root = get_root()
+    root['test-doc'] = Document(title='Test Doc')
+    link = root['link'] = Link(link=u'http://some-wild-example.org',
+                               title=u'Test Link')
+    view = LinkView(link, dummy_request)
+    result = view.redirect()
+    assert result.location == 'http://some-wild-example.org'
 
 
 def test_popup_view(db_session, dummy_request):
