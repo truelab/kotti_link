@@ -8,7 +8,7 @@
     <p class="description">
       ${context.description}
     </p>
-    test
+    <span i18n:translate="">Not implemented yet!</span>
   </article>
 
 </html>

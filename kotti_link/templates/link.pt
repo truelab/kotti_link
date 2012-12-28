@@ -8,7 +8,6 @@
     <p class="description">
       ${context.description}
     </p>
-    test
   </article>
 
 </html>
