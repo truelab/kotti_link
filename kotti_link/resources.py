@@ -2,28 +2,23 @@ from sqlalchemy import Column
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import Unicode
-from zope.interface import implements
 
-from kotti.interfaces import IDefaultWorkflow
-from kotti.resources import Content
+from kotti.resources import Document
 
 from kotti_link import _
 
 
-class Link(Content):
+class Link(Document):
     """Link content type"""
-
-    implements(IDefaultWorkflow)
 
     id = Column(
         Integer(),
-        ForeignKey('contents.id'),
+        ForeignKey('documents.id'),
         primary_key=True
     )
-
     link = Column(Unicode())
 
-    type_info = Content.type_info.copy(
+    type_info = Document.type_info.copy(
         name=u'Link',
         title=_(u'Link'),
         add_view=u'add_link',

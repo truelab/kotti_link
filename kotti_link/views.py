@@ -2,7 +2,7 @@
 
 from colander import SchemaNode
 from colander import String
-from kotti.views.edit.content import ContentSchema
+from kotti.views.edit.content import DocumentSchema
 from kotti.views.form import AddFormView
 from kotti.views.form import EditFormView
 from pyramid.view import view_config
@@ -16,7 +16,7 @@ from kotti_link.resources import Link
 from kotti_link.fanstatic import kotti_link
 
 
-class LinkSchema(ContentSchema):
+class LinkSchema(DocumentSchema):
     """Schema for add / edit forms of Link"""
 
     link = SchemaNode(
