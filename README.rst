@@ -17,5 +17,11 @@ you setup Fanstatic) section could then look like this::
 
     kotti.configurators = kotti_link.kotti_configure
 
+``kotti_link`` extends your Kotti site with a link content type that allows you to
+add a document with the capability to link to any other place in the internal site
+or anywhere in the internet. You have to specify the link in the edit mode of the
+link content type to the attribute link. Internal redirects should start with ``/``
+and external with ``http://``. Then you have to adjust the default view for your
+object to ``Redirect View``.
 
 .. _Find out more about Kotti: http://pypi.python.org/pypi/Kotti
