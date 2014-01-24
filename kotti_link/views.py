@@ -54,7 +54,7 @@ class LinkView(object):
         self.request = request
 
     @view_config(name='view',
-                 renderer='kotti_link:templates/link.pt')
+                 renderer='kotti:templates/view/document.pt')
     def view(self):
         return {}
 
