@@ -4,7 +4,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 project = 'kotti_link'
-version = '0.1a1'
+version = '0.1a2'
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
