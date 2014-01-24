@@ -1,4 +1,1 @@
-recursive-include kotti_link/locale *
-recursive-include kotti_link/templates *
-recursive-include kotti_link/tests *
 prune local
