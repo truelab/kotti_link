@@ -29,6 +29,6 @@ class Link(Document):
         ],
     )
 
-    def __init__(self, link, **kwargs):
+    def __init__(self, link=u'', **kwargs):
         super(Link, self).__init__(**kwargs)
         self.link = link
