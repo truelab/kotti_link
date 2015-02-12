@@ -1,6 +1,7 @@
 
 
 def test_link(db_session, root):
+    """ Basic link constructor and add to root """
     from kotti_link.resources import Link
 
     content = Link(link='')
