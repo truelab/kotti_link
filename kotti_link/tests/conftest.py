@@ -11,11 +11,9 @@ def extra_principals(db_session):
     P[u'frank'] = dict(name=u'frank', title=u"Frank")
     P[u'group:bobsgroup'] = dict(name=u'group:bobsgroup', title=u"Bob's Group")
     P[u'group:franksgroup'] = dict(name=u'group:franksgroup',
-        title=u"Frank's Group")
+                                   title=u"Frank's Group")
 
 pytest_plugins = "kotti"
-
-from pytest import fixture
 
 
 @fixture(scope='session')
