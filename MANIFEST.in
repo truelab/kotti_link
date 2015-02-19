@@ -1,1 +1,4 @@
 prune local
+include *.txt
+recursive-include docs *
+recursive-include kotti_link *
